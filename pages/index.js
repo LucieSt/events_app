@@ -1,41 +1,46 @@
-const Home = () => {
-	return (
-		<div className="container">
-			<header>
-				<nav>
-					<img />
-					<a href='/'>Home</a>
-					<a href='/events'>Events</a>
-					<a href='/about-us'>About us</a>
-				</nav>
-			</header>
+import Image from 'next/image';
 
-			<main>
-				<a href=''>
-					<img />
-					<h2>Events in London</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-				</a>
+const Home = ({data}) => {
 
-				<a href=''>
-					<img />
-					<h2>Events in San Francisco</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-				</a>
+  return (
+    <div className="container">
+      <header>
+        <nav>
+          <img />
+          <a href="/">Home</a>
+          <a href="/events">Events</a>
+          <a href="/about-us">About us</a>
+        </nav>
+      </header>
 
-				<a href=''>
-					<img />
-					<h2>Events in Barcelona</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-				</a>
-			</main>
+      <main>
 
-			<footer>
-				<p>created in April 2023</p>
-			</footer>
+				{data.map((city) => (
+					<a key={city.id} href={`/events/${city.id}`}>
+						<Image src={city.image} alt={city.title} width={200} height={170} />
+						<h2>{city.title}</h2>
+						<p>{city.description}</p>
+					</a>
+				))}
 
-		</div>
-	)
+      </main>
+
+      <footer>
+        <p>created in April 2023</p>
+      </footer>
+    </div>
+  );
 };
 
 export default Home;
+
+export async function getServerSideProps() {
+	const {events_categories} = await import('/data/data.json');
+	console.log(events_categories);
+
+  return {
+    props: {
+      data: events_categories,
+    },
+  };
+}
