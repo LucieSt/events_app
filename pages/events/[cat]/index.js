@@ -1,15 +1,16 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const EventsCatPage = ({ data }) => {
   return (
     <div>
       {data.map((event) => {
         return (
-          <a key={event.id} href={`/events/${event.city}/${event.id}`}>
+          <Link key={event.id} href={`/events/${event.city}/${event.id}`} passHref>
 						<Image src={event.image} alt={event.title} width={200} height={170} />
             <h2>{event.title}</h2>
 						<p>{event.description}</p>
-          </a>
+          </Link>
         );
       })}
     </div>

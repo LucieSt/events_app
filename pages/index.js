@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 const Home = ({data}) => {
 
@@ -7,20 +8,20 @@ const Home = ({data}) => {
       <header>
         <nav>
           <img />
-          <a href="/">Home</a>
-          <a href="/events">Events</a>
-          <a href="/about-us">About us</a>
+          <Link href="/" passHref>Home</Link>
+          <Link href="/events" passHref>Events</Link>
+          <Link href="/about-us" passHref>About us</Link>
         </nav>
       </header>
 
       <main>
 
 				{data.map((city) => (
-					<a key={city.id} href={`/events/${city.id}`}>
+					<Link key={city.id} href={`/events/${city.id}`} passHref>
 						<Image src={city.image} alt={city.title} width={200} height={170} />
 						<h2>{city.title}</h2>
 						<p>{city.description}</p>
-					</a>
+					</Link>
 				))}
 
       </main>
