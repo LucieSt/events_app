@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
+// video 1:45
+
 const Home = ({data}) => {
 
   return (
