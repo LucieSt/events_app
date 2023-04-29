@@ -3,15 +3,11 @@ import Image from "next/image";
 const EventPage = ({data}) => {
   return (
     <>
-			{data.map((event) => {
-				return (
-					<div key={event.id}>
-						<Image src={event.image} alt={event.title} width={400} height={400} />
-						<h2>{event.title}</h2>
-						<p>{event.description}</p>
-					</div>
-				)
-			})}
+			<div key={data.id}>
+				<Image src={data.image} alt={data.title} width={1000} height={500} />
+				<h2>{data.title}</h2>
+				<p>{data.description}</p>
+			</div>
     </>
   );
 };
@@ -37,13 +33,13 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context) {
 	const { allEvents } = await import("/data/data.json");
-	const events = allEvents.filter((event) => {
+	const eventData = allEvents.find((event) => {
     return event.id === context.params.id;
   });
 
   return {
     props: {
-      data: events,
+      data: eventData,
     },
   };
 };

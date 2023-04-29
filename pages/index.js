@@ -1,36 +1,12 @@
-import Image from 'next/image';
-import Link from 'next/link';
+import { HomePage } from '../src/components/home/home-page';
 
-// video 1:45
+// video 2:17 - styles
 
 const Home = ({data}) => {
 
   return (
     <div className="container">
-      <header>
-        <nav>
-          <img />
-          <Link href="/" passHref>Home</Link>
-          <Link href="/events" passHref>Events</Link>
-          <Link href="/about-us" passHref>About us</Link>
-        </nav>
-      </header>
-
-      <main>
-
-				{data.map((city) => (
-					<Link key={city.id} href={`/events/${city.id}`} passHref>
-						<Image src={city.image} alt={city.title} width={200} height={170} />
-						<h2>{city.title}</h2>
-						<p>{city.description}</p>
-					</Link>
-				))}
-
-      </main>
-
-      <footer>
-        <p>created in April 2023</p>
-      </footer>
+      <HomePage data={data}/>
     </div>
   );
 };
