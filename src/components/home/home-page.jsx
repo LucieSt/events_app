@@ -4,14 +4,14 @@ import Image from "next/image";
 export const HomePage = ({ data }) => {
 
 	return (
-		<main>
+		<div className="home_body">
 			{data.map((city) => (
-				<Link key={city.id} href={`/events/${city.id}`} passHref>
+				<Link className="card" key={city.id} href={`/events/${city.id}`} passHref>
 					<Image src={city.image} alt={city.title} width={200} height={170} />
 					<h2>{city.title}</h2>
 					<p>{city.description}</p>
 				</Link>
 			))}
-		</main>
+		</div>
 	)
 };
