@@ -1,6 +1,6 @@
 import { HomePage } from '../src/components/home/home-page';
 
-// video 2:45 - styles
+// video 3:40 - styles
 
 const Home = ({data}) => {
 
