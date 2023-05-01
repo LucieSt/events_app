@@ -7,9 +7,13 @@ export const HomePage = ({ data }) => {
 		<div className="home_body">
 			{data.map((city) => (
 				<Link className="card" key={city.id} href={`/events/${city.id}`} passHref>
-					<Image src={city.image} alt={city.title} width={200} height={170} />
-					<h2>{city.title}</h2>
-					<p>{city.description}</p>
+					<div className="image">
+						<Image src={city.image} alt={city.title} width={400} height={300} />
+					</div>
+					<div className="content">
+						<h2>{city.title}</h2>
+						<p>{city.description}</p>
+					</div>
 				</Link>
 			))}
 		</div>

@@ -1,15 +1,7 @@
-import Image from "next/image";
+import SingleEvent from "../../../src/components/events/eventCard";
 
 const EventPage = ({data}) => {
-  return (
-    <>
-			<div key={data.id}>
-				<Image src={data.image} alt={data.title} width={1000} height={500} />
-				<h2>{data.title}</h2>
-				<p>{data.description}</p>
-			</div>
-    </>
-  );
+  return <SingleEvent data={data} />
 };
 
 export default EventPage;
