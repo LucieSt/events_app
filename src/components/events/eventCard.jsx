@@ -6,7 +6,7 @@ const SingleEvent = ({ data }) => {
 const inputEmail = useRef();
 
 const onSubmit = (e) => {
-	// e.preventDefault();
+	e.preventDefault();
 	console.log(inputEmail)
 };
 
@@ -18,7 +18,7 @@ const onSubmit = (e) => {
 			<form onSubmit={onSubmit} className="email_registration">
 				<label>Get registered for this event!</label>
 				<input ref={inputEmail} type="email" id="email" placeholder="Please insert you email here"/>
-				<button type="button">Submit</button>
+				<button type="submit">Submit</button>
 			</form>
     </div>
   );
