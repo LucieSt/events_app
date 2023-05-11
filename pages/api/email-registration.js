@@ -39,10 +39,14 @@ export default function handler(req, res) {
             .json({ message: "This email has been already registered" });
           return ev;
         }
-        return {
+        const test = {
           ...ev,
           emails_registered: [...ev.emails_registered, email],
         };
+
+        console.log(test);
+
+        return test;
       }
       return ev;
     });
